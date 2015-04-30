@@ -9,3 +9,5 @@ dist
 /obj
 .ntvs_analysis.dat
 *.suo
+/data/flickr/
+process.env
