@@ -6,6 +6,6 @@ angular.module('portfotolioNodejsApp')
       .state('main', {
         url: '/',
         templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl as ctrl'
+        controller: 'MainCtrl as controller'
       });
   });

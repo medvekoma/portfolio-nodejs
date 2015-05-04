@@ -45,6 +45,7 @@
 
 .photo-link {
   display: block;
+  border: 5px solid white;
 }
 
 .title-frame {
@@ -53,9 +54,14 @@
   width: 100%;
   overflow: hidden;
   max-height: 80px;
+  color: lightgrey;
 }
 
 .photo-container {
   margin-left: 5%;
   width: 95%;
+}
+
+html {
+  background-color: #222222;
 }
