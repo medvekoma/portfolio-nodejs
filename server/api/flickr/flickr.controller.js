@@ -18,14 +18,22 @@ function getOptions(req)
 // Get list of flickrs
 exports.index = function(req, res) {
   Flickr.tokenOnly(getOptions(req), function(err, flickr){
-    flickr.people.getPhotos({user_id: '27725019@N00', per_page: 30}, function(err, response){
+    flickr.people.getPhotos({user_id: '27725019@N00', per_page: 30, extras: 'url_s'}, function(err, response){
       if (err){
         console.log(err);
       } else {
         var result = response.photos.photo.map(function (item) {
+          var left = (350 - item.width_s) / 2;
+          var top = (350 - item.height_s) / 2;
           return {
             title: item.title,
-            imageUrl: 'http://farm' + item.farm + '.staticflickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_m.jpg'};
+            imageUrl: item.url_s,
+            height: item.height_s,
+            width: item.width_s,
+            left: left,
+            top: top,
+            textTop: top + parseInt(item.height_s) + 5
+          };
         })
         res.json(result);
       }

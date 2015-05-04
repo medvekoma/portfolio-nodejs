@@ -28,3 +28,34 @@
     margin-top: 70px;
     border-top: 1px solid #E5E5E5;
 }
+
+.slide {
+  position: relative;
+  float: left;
+  width: 350px;
+  height: 350px;
+}
+
+.photo-frame {
+  position: absolute;
+  display: block;
+  left: 50px;
+  top: 90px;
+}
+
+.photo-link {
+  display: block;
+}
+
+.title-frame {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  max-height: 80px;
+}
+
+.photo-container {
+  margin-left: 5%;
+  width: 95%;
+}
