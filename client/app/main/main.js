@@ -4,7 +4,7 @@ angular.module('portfotolioNodejsApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('main', {
-        url: '/',
+        url: '/:userId',
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl as controller'
       });

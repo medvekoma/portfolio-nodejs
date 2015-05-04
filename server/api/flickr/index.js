@@ -5,7 +5,6 @@ var controller = require('./flickr.controller');
 
 var router = express.Router();
 
-router.get('/', controller.index);
-router.get('/callback', controller.callback);
+router.get('/:userId', controller.index);
 
 module.exports = router;

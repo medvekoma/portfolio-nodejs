@@ -17,9 +17,10 @@ function getOptions(req)
 
 // Get list of flickrs
 exports.index = function(req, res) {
+  console.log('UserId: ' + req.params.userId);
   Flickr.tokenOnly(getOptions(req), function(err, flickr){
     var options = {
-      user_id: '27725019@N00',
+      user_id: req.params.userId,
       per_page: 30,
       extras: 'url_s, path_alias'};
     flickr.people.getPhotos(options, function(err, response){
@@ -51,8 +52,3 @@ exports.index = function(req, res) {
   })
 };
 
-exports.callback = function(req, res){
-  console.log('QUERY: ' + req.query);
-  flickrOptions.exchange(req.query);
-  res.write('');
-};
