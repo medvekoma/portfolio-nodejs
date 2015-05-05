@@ -6,6 +6,9 @@ angular.module('portfotolioNodejsApp')
     self.photos = [];
 
     var userId = $stateParams.userId;
+    if (!userId){
+      userId = '';
+    }
     $http.get('/api/flickr/' + userId).success(function(photos) {
       self.photos = photos;
     });

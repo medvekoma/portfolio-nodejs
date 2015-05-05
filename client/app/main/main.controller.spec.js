@@ -5,24 +5,19 @@ describe('Controller: MainCtrl', function () {
   // load the controller's module
   beforeEach(module('portfotolioNodejsApp'));
 
-  var MainCtrl,
-      scope,
-      $httpBackend;
+  var $httpBackend, ctrl;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
+  beforeEach(inject(function (_$httpBackend_, $controller) {
     $httpBackend = _$httpBackend_;
     $httpBackend.expectGET('/api/flickr/')
       .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
 
-    scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
-      $scope: scope
-    });
+    ctrl = $controller('MainCtrl');
   }));
 
   it('should attach a list of things to the scope', function () {
     $httpBackend.flush();
-    expect(scope.awesomeThings.length).toBe(4);
+    expect(ctrl.photos.length).toBe(4);
   });
 });
