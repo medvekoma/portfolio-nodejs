@@ -5,10 +5,7 @@ angular.module('portfotolioNodejsApp')
     var self = this;
     self.photos = [];
 
-    var userId = '27725019@N00';
-    if ($stateParams.userId){
-      userId = $stateParams.userId;
-    }
+    var userId = $stateParams.userId;
     $http.get('/api/flickr/' + userId).success(function(photos) {
       self.photos = photos;
     });
