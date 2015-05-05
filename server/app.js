@@ -4,8 +4,13 @@
 
 'use strict';
 
-require('dotenv').config({path: 'process.env'});
-console.log('APIKEY: ' + process.env.FLICKR_APIKEY);
+var fs = require('fs');
+var dotenv = require('dotenv');
+
+if (fs.existsSync('process.env')){
+    dotenv.config({path: 'process.env'});
+    console.log('APIKEY: ' + process.env.FLICKR_APIKEY);
+}
 
 // Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
