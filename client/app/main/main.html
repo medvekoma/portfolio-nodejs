@@ -16,7 +16,7 @@
         <a class="photo-link" href="{{photo.flickrUrl}}" style="background-image: url('{{photo.imageUrl}}'); width: {{photo.width}}px; height: {{photo.height}}px;"></a>
       </div>
       <div class="title-frame" style="top: {{photo.textTop}}px">
-        {{photo.title}}
+        <a href="/{{photo.userAlias}}">{{photo.ownerName}}</a>: {{photo.title}}
       </div>
     </div>
       <!--

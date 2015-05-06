@@ -65,3 +65,24 @@
 html {
   background-color: #222222;
 }
+
+body {
+  font-family: Trebuchet MS,sans-serif;
+  letter-spacing: .1em;
+}
+
+a:link {
+  text-decoration: none;
+  font-weight: bold;
+  color: #c4c4c4;
+}
+
+a:visited {
+  text-decoration: none;
+  font-weight: bold;
+  color: #c4c4c4;
+}
+
+a:hover {
+  color: white;
+}

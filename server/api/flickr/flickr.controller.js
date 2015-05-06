@@ -25,7 +25,9 @@ function processPhotos(photos, res){
       left: left,
       top: top,
       textTop: top + parseInt(item.height_s) + 5,
-      flickrUrl: 'http://flickr.com/photos/' + userAlias + '/' + item.id
+      flickrUrl: 'http://flickr.com/photos/' + userAlias + '/' + item.id,
+      ownerName: item.ownername,
+      userAlias: userAlias
     };
   })
   res.json(result);
@@ -36,7 +38,7 @@ function getPhotosOf(userId, res){
     var options = {
       user_id: userId,
       per_page: 30,
-      extras: 'url_s, path_alias'};
+      extras: 'url_s, path_alias, owner_name'};
     flickr.people.getPhotos(options, function(err, response) {
       if (err) {
         console.log(err);
@@ -52,7 +54,7 @@ function getInterestingPhotos(res){
   Flickr.tokenOnly(flickrOptions, function(err, flickr){
     var options = {
       per_page: 30,
-      extras: 'url_s, path_alias'};
+      extras: 'url_s, path_alias, owner_name'};
     flickr.interestingness.getList(options, function(err, response) {
       if (err) {
         console.log(err);
