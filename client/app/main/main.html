@@ -11,6 +11,7 @@
 -->
 
 <div class="photo-container">
+    <div>{{controller.photos.error}}</div>
     <div class="slide" ng-repeat="photo in controller.photos">
       <div class="photo-frame" style="left: {{photo.left}}px; top: {{photo.top}}px;">
         <a class="photo-link" href="{{photo.flickrUrl}}" style="background-image: url('{{photo.imageUrl}}'); width: {{photo.width}}px; height: {{photo.height}}px;"></a>

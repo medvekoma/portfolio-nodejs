@@ -31,38 +31,46 @@ function processPhotos(photos, res){
     };
   })
   res.json(result);
-};
+}
 
 function getPhotosOf(userId, res){
   Flickr.tokenOnly(flickrOptions, function(err, flickr){
-    var options = {
-      user_id: userId,
-      per_page: 30,
-      extras: 'url_s, path_alias, owner_name'};
-    flickr.people.getPhotos(options, function(err, response) {
-      if (err) {
-        console.log(err);
-        res.json(404, {});
-      } else {
-        processPhotos(response.photos.photo, res);
-      }
-    })
+    if (err){
+      res.json({error: err});
+    } else {
+      var options = {
+        user_id: userId,
+        per_page: 30,
+        extras: 'url_s, path_alias, owner_name'};
+      flickr.people.getPhotos(options, function(err, response) {
+        if (err) {
+          console.log(err);
+          res.json(404, {});
+        } else {
+          processPhotos(response.photos.photo, res);
+        }
+      })
+    }
   })
-};
+}
 
 function getInterestingPhotos(res){
   Flickr.tokenOnly(flickrOptions, function(err, flickr){
-    var options = {
-      per_page: 30,
-      extras: 'url_s, path_alias, owner_name'};
-    flickr.interestingness.getList(options, function(err, response) {
-      if (err) {
-        console.log(err);
-        res.json(404, {});
-      } else {
-        processPhotos(response.photos.photo, res);
-      }
-    })
+    if (err) {
+      res.json({error: err});
+    } else {
+      var options = {
+        per_page: 30,
+        extras: 'url_s, path_alias, owner_name'};
+      flickr.interestingness.getList(options, function(err, response) {
+        if (err) {
+          console.log(err);
+          res.json(404, {});
+        } else {
+          processPhotos(response.photos.photo, res);
+        }
+      })
+    }
   })
 }
 
